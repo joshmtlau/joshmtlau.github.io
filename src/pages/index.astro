@@ -1,16 +1,32 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Work in Progress. Come back some time later...</h1>
-  </body>
-</html>
+<BaseLayout>
+  <article class="prose prose-pink">
+    <h1>Hi, I'm Mu-Te Lau (劉慕德)!</h1>
+    <p>
+      I'm a PhD student at
+      <a href="https://www.mccormick.northwestern.edu/computer-science/">
+        CS, Northwestern University</a
+      >. I received my B.S. and M.S. at
+      <a
+        href="https://www.google.com/search?q=%E5%8F%B0%E5%A4%A7%E9%9B%BB%E6%A9%9F&sourceid=chrome&ie=UTF-8"
+      >
+        EE, National Taiwan University</a
+      >, where I was advised by <a
+        href="https://www.ee.ntu.edu.tw/profile1.php?teacher_id=901153"
+        >Prof. Chung-Yang (Ric) Huang</a
+      >.
+    </p>
+    <p>
+      I study system software for quantum computing, especially quantum
+      compiler. In my Master's, I co-developed
+    </p>
+
+    <p>
+      This personal page just got deployed and is a work in progress. Come back
+      some time later for more!
+    </p>
+  </article>
+</BaseLayout>
