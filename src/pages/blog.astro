@@ -15,7 +15,7 @@ const posts = (await getCollection("posts")).sort(
   <ul class="space-y-4">
     {
       posts.map((post) => (
-        <li class="bg-slate-100 p-4 rounded-sm">
+        <li class="bg-gray-100 p-4 rounded-md border-2 border-transparent hover:border-rose-500 hover:border-solid">
           <a href={`/posts/${post.slug}/`}>
             <>
               <span class="text-gray-700 font-bold">{post.data.title}</span>
