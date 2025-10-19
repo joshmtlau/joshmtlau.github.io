@@ -1,6 +1,9 @@
 ---
 import "katex/dist/katex.min.css";
 import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+const { titlePrefix } = Astro.props;
+const { titleSuffix } = Astro.props;
 ---
 
 <html lang="en">
@@ -9,18 +12,40 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Mu-Te Lau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- LaTeX Computer Modern fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Computer+Modern+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Computer+Modern+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Computer+Modern+Typewriter:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>
+      {
+        (titlePrefix ? titlePrefix + " — " : "") +
+          "Mu-Te Lau" +
+          (titleSuffix ? " — " + titleSuffix : "")
+      }
+    </title>
   </head>
-  <body>
-    <div class="mb-32 p-4 text-center bg-rose-100 sticky top-0">
-      <div class="max-w-3xl mx-auto px-4 space-x-8">
-        <a href="/">Home</a>
-        <!-- <a href="/about/">About</a> -->
-        <a href="/blog/">Blog</a>
+  <body class="bg-snow font-content">
+    <header class="bg-snow sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <NavBar />
       </div>
-    </div>
-    <div class="max-w-3xl mx-auto px-4">
-      <slot />
-    </div>
+    </header>
+    <main>
+      <div>
+        <slot />
+      </div>
+    </main>
   </body>
 </html>

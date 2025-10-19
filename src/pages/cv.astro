@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+
+// GitHub provides a download link and not a view link, so we use
+// rawcdn.githack.com to serve the PDF file from GitHub
+const cv_url =
+  "https://rawcdn.githack.com/joshmtlau/curriculum-vitae/9cf9f2782d22d81b17a6624eb7ad3c11f53a9e16/cv.pdf";
+---
+
+<BaseLayout>
+  <Section>
+    <h1 class="font-heading-1">Curriculum Vitae</h1>
+
+    <p class="font-content">
+      This is my CV. The version here is the latest version generated from the
+      corresponding LaTeX source code at
+      <a href="https://github.com/joshmtlau/curriculum-vitae" class="link"
+        >this GitHub repository</a
+      >.
+    </p>
+    <div class="cv-container">
+      <div class="pdf-viewer">
+        <iframe
+          src={cv_url}
+          width="100%"
+          height="800px"
+          style="border: 1px solid #ddd; border-radius: 8px;"
+          title="Curriculum Vitae PDF"
+        >
+          <p>Your browser does not support PDFs. <a href={cv_url} class="link"
+          target="_blank">Download the PDF</a> instead. </p>
+        </iframe>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .cv-container {
+    margin-top: 2rem;
+  }
+
+  .pdf-viewer {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .pdf-viewer iframe {
+      height: 600px;
+    }
+  }
+</style>

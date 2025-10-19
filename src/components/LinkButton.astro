@@ -1,0 +1,11 @@
+---
+const { link, text } = Astro.props;
+---
+
+<a href={link} }>
+  <div
+    class=`h-8 w-fit pl-4 pr-4 bg-jet text-snow font-emph rounded-4xl mt-8 mb-8 flex items-center justify-center hover:bg-amaranth ease-in-out transition duration-100`
+  >
+    {text}
+  </div>
+</a>

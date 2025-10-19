@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import Section from "../components/Section.astro";
+import ItemList from "../components/ItemList.astro";
 
 const posts = (await getCollection("posts")).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
@@ -8,28 +10,10 @@ const posts = (await getCollection("posts")).sort(
 ---
 
 <BaseLayout>
-  <h1 class="text-rose-900 text-4xl font-black">Blog</h1>
-  <p class="mb-8 mt-8 text-gray-700">
-    This is where I'll be posting blogs (duh)
-  </p>
-  <ul class="space-y-4">
-    {
-      posts.map((post) => (
-        <li class="bg-gray-100 p-4 rounded-md border-2 border-transparent hover:border-rose-500 hover:border-solid">
-          <a href={`/posts/${post.slug}/`}>
-            <>
-              <span class="text-gray-700 font-bold">{post.data.title}</span>
-              <span class="text-gray-500 italic">
-                {" "}
-                — {post.data.date.toDateString()}
-              </span>
-            </>
-            {post.data.description && (
-              <p class="text-gray-500">{post.data.description}</p>
-            )}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <Section>
+    <h1 class="font-heading-1">Blog</h1>
+
+    <p class="mb-8 mt-8 text-jet">This is where I'll be posting blogs (duh)</p>
+    <ItemList items={posts} basePath="/posts" />
+  </Section>
 </BaseLayout>

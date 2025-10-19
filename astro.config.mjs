@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
@@ -8,6 +9,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://joshmtlau.github.io',
+  integrations: [mdx()],
 
   // base: '/repo-name' // not needed for this repo
   markdown: {

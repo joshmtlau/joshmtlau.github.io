@@ -1,40 +1,41 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import LinkButton from "../components/LinkButton.astro";
+import Section from "../components/Section.astro";
+const nucs_url = "https://www.mccormick.northwestern.edu/computer-science/";
 ---
 
-<BaseLayout>
-  <article class="prose prose-pink">
-    <h1>Hi, I'm Mu-Te Lau (劉慕德)!</h1>
-    <div class="border-amber-400 border-2 rounded-md p-4">
-      🚧 <b>WIP</b> 🚧 This personal page just got deployed and is slowly growing.
-      Come back some time later for more!
-    </div>
-    <p>
-      I'm a PhD student at
-      <a href="https://www.mccormick.northwestern.edu/computer-science/">
-        CS, Northwestern University</a
-      >. I received my B.S. and M.S. at
-      <a
-        href="https://www.google.com/search?q=%E5%8F%B0%E5%A4%A7%E9%9B%BB%E6%A9%9F&sourceid=chrome&ie=UTF-8"
-      >
-        EE, National Taiwan University</a
-      >, where I was advised by <a
-        href="https://www.ee.ntu.edu.tw/profile1.php?teacher_id=901153"
-        >Prof. Chung-Yang (Ric) Huang</a
-      >.
+<BaseLayout titleSuffix="PhD student at CS, Northwestern">
+  <Section>
+    <h1 class="font-heading-1">Bits for Qubits</h1>
+    <p class="font-content">
+      Hi, I'm Mu-Te Lau (劉慕德)! I build compilers and other system software
+      for quantum computers.
     </p>
-    <p>
-      I focus on developing techniques that cut quantum circuit costs and make
-      algorithms more practical. In my Master's, I co-developed <a
-        href="https://github.com/DVLab-NTU/qsyn">Qsyn</a
-      >, a quantum circuit optimization framework, where I turned research
-      breakthroughs into real features while leading performance boosts and code
-      overhauls.
-    </p>
+    <ul class="flex space-x-12 mt-8">
+      <li>
+        <p class="font-heading-3">I'm a...</p>
+        <p class="font-content">
+          PhD student in <a class="link" href={nucs_url}> CS, Northwestern</a>
+        </p>
+      </li>
+      <li>
+        <p class="font-heading-3">I also go by...</p>
+        <p class="font-content">Josh/Joshua</p>
+      </li>
+    </ul>
+    <LinkButton link="/about/" text="About Me" />
+  </Section>
 
-    <p>
-      Beyond research, I'm a passionate musician and plays the euphonium and
-      piano.
+  <Section color="columbia-blue">
+    <h2 class="font-heading-2">News</h2>
+    <p class="font-content">iausdiaudjiausd</p>
+  </Section>
+
+  <Section>
+    <h2 class="font-heading-2">Quantum Computing, Coding, and More...</h2>
+    <p class="font-content">
+      I talk about quantum and nerdy stuffs from time to time.
     </p>
-  </article>
+  </Section>
 </BaseLayout>

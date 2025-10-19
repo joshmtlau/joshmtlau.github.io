@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const nucs_url = "https://www.mccormick.northwestern.edu/computer-science/";
+const nikos_url = "https://users.cs.northwestern.edu/~hardav/#top";
+const dvlab_url = "https://dvlab.ee.ntu.edu.tw/";
+const giee_url = "https://graduate.ee.ntu.edu.tw/";
+const ric_url = "https://www.ee.ntu.edu.tw/profile1.php?teacher_id=901153";
+const qsyn_url = "https://github.com/DVLab-NTU/qsyn";
+const ntuwb_url = "https://www.instagram.com/ntuwindband/";
+---
+
+<BaseLayout titlePrefix="About">
+  <section class="max-w-6xl mx-auto px-4 pt-16 pb-16">
+    <h1 class="font-heading-1">Mu-Te Lau</h1>
+
+    <p class="font-content">
+      I'm a PhD student at
+      <a class="link" href={nucs_url}>CS, Northwestern University</a>, currently
+      working with
+      <a class="link" href={nikos_url}>Prof. Nikos Hardavellas</a>. My research
+      interest lies in system software for quantum computing, particularly
+      quantum compilation. I focus on developing techniques that cut quantum
+      computing costs and make quantum algorithms more practical.
+    </p>
+
+    <p>
+      Previously at
+      <a class="link" href={dvlab_url}
+        >Design Verification Lab, National Taiwan University</a
+      > (advised by
+      <a class="link" href={ric_url}>Prof. Chung-Yang (Ric) Huang</a>), I
+      co-developed <a class="link" href={qsyn_url}>Qsyn</a>, an open-source
+      quantum circuit optimization tool, where I turned research breakthroughs
+      into features while leading performance boosts and code overhauls.
+    </p>
+
+    <p>
+      Beyond research, I'm a passionate musician and play the euphonium and
+      piano. I was a member of the <a href={ntuwb_url}>NTU Wind Band</a> and had
+      served various roles, including chair Euphonium player, (vice) band leader,
+      social media editor.
+    </p>
+
+    <h2 class="font-heading-3">Pronouncing My Name</h2>
+    <p class="font-content">
+      In English it's "Moo-Tuh Lau"! In Mandarin it's 劉慕德 (IPA:
+      <span class="font-emph">[ljow˧˨˧ mu˦˩ tɤ˧˨˧]</span>).
+    </p>
+    <details class="font-content">
+      <summary class="link-inverse font-emph"
+        >For the linguistic nerds or confused Mandarin speakers:</summary
+      >
+      The English transcription is an amalgamation of a Mandarin 慕德 (Mu-Te) and
+      a Cantonese/Taigi 劉 (Lau). As a result I have Lau instead of Liu as my surname.
+    </details>
+  </section>
+</BaseLayout>

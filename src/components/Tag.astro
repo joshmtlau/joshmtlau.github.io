@@ -1,0 +1,13 @@
+---
+export interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<span
+  class="inline-block rounded-full bg-columbia-blue px-3 py-1 text-sm font-semibold text-jet border border-jet-light"
+>
+  #{tag}
+</span>

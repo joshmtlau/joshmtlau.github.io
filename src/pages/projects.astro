@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Section from "../components/Section.astro";
+import ItemList from "../components/ItemList.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0)
+);
+---
+
+<BaseLayout>
+  <Section>
+    <h1 class="font-heading-1">Projects</h1>
+
+    <p class="mb-8 mt-8 text-jet">My personal and professional projects</p>
+    <ItemList items={projects} basePath="/projects" />
+  </Section>
+</BaseLayout>

@@ -1,10 +1,71 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
-@utility prose-pink {
-    @apply prose;
-    & > * {
-      --tw-prose-body: var(--color-pink-800);
-      --tw-prose-headings: var(--color-pink-900);
+/* Prism syntax highlighting */
+@import 'prismjs/themes/prism-tomorrow.css';
+
+@theme {
+    --color-snow: hsla(18, 80%, 98%, 1);
+    --color-jet-light: hsla(0, 6%, 70%, 1);
+    --color-jet: hsla(0, 6%, 20%, 1);
+    --color-amaranth: hsla(350, 73%, 60%, 1);
+    --color-columbia-blue: hsla(202, 64%, 88%, 1);
+    --font-sans: 
+          "Inter",
+          "Noto Sans",
+          "Noto Sans CJK TC", 
+          "Noto Sans CJK JP",
+          "Noto Sans CJK KR",
+          sans-serif;
+}
+
+@layer components {
+    .font-heading-1 {
+      @apply text-6xl font-extrabold text-amaranth leading-tight mb-12 mt-12;
     }
-  }
+    .font-heading-2 {
+      @apply text-4xl font-bold text-jet leading-snug mb-8 mt-8;
+    }
+    .font-heading-3 {
+      @apply text-2xl font-normal text-jet leading-snug mb-8 mt-8;
+    }
+    .font-emph {
+      @apply text-lg font-normal text-jet leading-relaxed mb-4 mt-4;
+    }
+    .font-content {
+      @apply text-lg font-light text-jet leading-relaxed mb-4 mt-4;
+    }
+    .link {
+        @apply underline decoration-1 underline-offset-2 hover:no-underline;
+    }
+    .link-inverse {
+        @apply hover:underline decoration-1 underline-offset-2;
+    }
+}
+
+/* Apply custom classes to prose elements */
+@layer utilities {
+    .prose {
+      font-family: var(--font-sans);
+    }
+    
+    .prose h1 {
+      @apply text-6xl font-extrabold text-amaranth leading-tight mb-12 mt-12;
+    }
+    
+    .prose h2 {
+      @apply text-4xl font-bold text-jet leading-snug mb-8 mt-8;
+    }
+    
+    .prose h3 {
+      @apply text-2xl font-normal text-jet leading-snug mb-8 mt-8;
+    }
+    
+    .prose p {
+      @apply text-lg font-light text-jet leading-relaxed mb-4 mt-4;
+    }
+    
+    .prose a {
+      @apply underline decoration-1 underline-offset-2 hover:no-underline;
+    }
+}
