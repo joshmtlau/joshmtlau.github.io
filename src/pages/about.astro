@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const nucs_url = "https://www.mccormick.northwestern.edu/computer-science/";
 const nikos_url = "https://users.cs.northwestern.edu/~hardav/#top";
+const kate_url = "https://knsmith.github.io/";
 const dvlab_url = "https://dvlab.ee.ntu.edu.tw/";
 const giee_url = "https://graduate.ee.ntu.edu.tw/";
 const ric_url = "https://www.ee.ntu.edu.tw/profile1.php?teacher_id=901153";
@@ -16,15 +17,16 @@ const ntuwb_url = "https://www.instagram.com/ntuwindband/";
 
     <p class="font-content">
       I'm a PhD student at
-      <a class="link" href={nucs_url}>CS, Northwestern University</a>, currently
-      working with
-      <a class="link" href={nikos_url}>Prof. Nikos Hardavellas</a>. My research
-      interest lies in system software for quantum computing, particularly
-      quantum compilation. I focus on developing techniques that cut quantum
-      computing costs and make quantum algorithms more practical.
+      <a class="link" href={nucs_url}>CS, Northwestern University</a>. I'm
+      currently advised by
+      <a class="link" href={nikos_url}>Prof. Nikos Hardavellas</a>, and I also
+      work with <a class="link" href={kate_url}>Prof. Kate Smith</a> often. My research
+      interest lies in system software for quantum computing, particularly quantum
+      compilation. I focus on developing techniques that cut quantum computing costs
+      and make quantum algorithms more practical.
     </p>
 
-    <p>
+    <p class="font-content">
       Previously at
       <a class="link" href={dvlab_url}
         >Design Verification Lab, National Taiwan University</a
@@ -35,11 +37,12 @@ const ntuwb_url = "https://www.instagram.com/ntuwindband/";
       into features while leading performance boosts and code overhauls.
     </p>
 
-    <p>
+    <p class="font-content">
       Beyond research, I'm a passionate musician and play the euphonium and
-      piano. I was a member of the <a href={ntuwb_url}>NTU Wind Band</a> and had
-      served various roles, including chair Euphonium player, (vice) band leader,
-      social media editor.
+      piano. I was a member of the <a class="link" href={ntuwb_url}
+        >NTU Wind Band</a
+      > and had served various roles, including chair Euphonium player, (vice) band
+      leader, social media editor.
     </p>
 
     <h2 class="font-heading-3">Pronouncing My Name</h2>
@@ -49,10 +52,13 @@ const ntuwb_url = "https://www.instagram.com/ntuwindband/";
     </p>
     <details class="font-content">
       <summary class="link-inverse font-emph"
-        >For the linguistic nerds or confused Mandarin speakers:</summary
+        >Details for the linguistic nerds or confused Mandarin speakers</summary
       >
-      The English transcription is an amalgamation of a Mandarin 慕德 (Mu-Te) and
-      a Cantonese/Taigi 劉 (Lau). As a result I have Lau instead of Liu as my surname.
+      <div class="font-content pl-4">
+        The English transcription is an amalgamation of a Mandarin 慕德 (Mu-Te)
+        and a Cantonese/Taigi 劉 (Lau). As a result I have Lau instead of Liu as
+        my surname.
+      </div>
     </details>
   </section>
 </BaseLayout>

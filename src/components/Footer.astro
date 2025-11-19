@@ -1,0 +1,94 @@
+---
+import { GoogleScholarSquareIcon } from "@/components/ui/icons/academicons-google-scholar-square";
+import { MailFilledIcon } from "@/components/ui/icons/ant-design-mail-filled";
+import { GithubFilledIcon } from "@/components/ui/icons/ant-design-github-filled";
+import { LinkedinFilledIcon } from "@/components/ui/icons/ant-design-linkedin-filled";
+
+interface SocialLink {
+  href: string;
+  ariaLabel: string;
+  icon: any;
+  isEmail?: boolean;
+  emailUser?: string;
+  emailDomain?: string;
+}
+
+const socialLinks: SocialLink[] = [
+  {
+    href: "https://scholar.google.com/citations?user=J7BNBysAAAAJ",
+    ariaLabel: "Google Scholar",
+    icon: GoogleScholarSquareIcon,
+  },
+  {
+    href: "https://github.com/joshmtlau",
+    ariaLabel: "GitHub",
+    icon: GithubFilledIcon,
+  },
+  {
+    href: "https://www.linkedin.com/in/mu-te-joshua-lau/",
+    ariaLabel: "LinkedIn",
+    icon: LinkedinFilledIcon,
+  },
+  {
+    href: "#",
+    ariaLabel: "Email",
+    icon: MailFilledIcon,
+    isEmail: true,
+    emailUser: "bXRsYXU",
+    emailDomain: "dS5ub3J0aHdlc3Rlcm4uZWR1",
+  },
+];
+---
+
+<footer class="bg-jet text-snow">
+  <div class="max-w-6xl mx-auto px-4 flex">
+    <div>
+      <h1 class="font-heading-1 text-snow mb-4 mt-12">Let's Connect!</h1>
+      <div class="flex-1 flex justify-end items-center">
+        <ul class="flex items-center space-x-4 mt-4 mb-8">
+          {
+            socialLinks.map((link) => {
+              const IconComponent = link.icon;
+              return (
+                <li class="flex items-center">
+                  <a
+                    id={link.isEmail ? "email-link" : undefined}
+                    href={link.href}
+                    aria-label={link.ariaLabel}
+                    data-user={link.emailUser}
+                    data-domain={link.emailDomain}
+                    class="flex items-center space-x-2 link-inverse"
+                  >
+                    <IconComponent size={24} className="fill-snow" />
+                    <span class="text-snow">{link.ariaLabel}</span>
+                  </a>
+                </li>
+              );
+            })
+          }
+          <script>
+            (function () {
+              const link = document.getElementById(
+                "email-link"
+              ) as HTMLAnchorElement;
+              if (link && link.dataset.user && link.dataset.domain) {
+                const user = atob(link.dataset.user);
+                const domain = atob(link.dataset.domain);
+                link.href = `mailto:${user}@${domain}`;
+              }
+            })();
+          </script>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center pb-8">
+    <p class="text-columbia-blue">
+      © 2025-{new Date().getFullYear()} Mu-Te Lau. All rights reserved.
+    </p>
+    <p class="text-columbia-blue text-xs">
+      Icons on this page are collected from Academicons (OpenFontLicense) and
+      Ant Design Icons (MIT License).
+    </p>
+  </div>
+</footer>

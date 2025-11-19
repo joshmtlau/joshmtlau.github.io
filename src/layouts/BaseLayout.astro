@@ -2,6 +2,8 @@
 import "katex/dist/katex.min.css";
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import LinkButton from "../components/LinkButton.astro";
 const { titlePrefix } = Astro.props;
 const { titleSuffix } = Astro.props;
 ---
@@ -47,5 +49,6 @@ const { titleSuffix } = Astro.props;
         <slot />
       </div>
     </main>
+    <Footer />
   </body>
 </html>

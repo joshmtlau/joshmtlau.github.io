@@ -1,18 +1,22 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import LinkButton from "../components/LinkButton.astro";
 import Section from "../components/Section.astro";
+import LinkButton from "../components/LinkButton.astro";
+import newsItems from "../content/news";
+
 const nucs_url = "https://www.mccormick.northwestern.edu/computer-science/";
 ---
 
 <BaseLayout titleSuffix="PhD student at CS, Northwestern">
   <Section>
-    <h1 class="font-heading-1">Bits for Qubits</h1>
+    <h1 class="font-heading-1">Mu-Te Lau</h1>
+
     <p class="font-content">
       Hi, I'm Mu-Te Lau (劉慕德)! I build compilers and other system software
       for quantum computers.
     </p>
-    <ul class="flex space-x-12 mt-8">
+
+    <ul class="flex space-x-16 mt-8 mb-8">
       <li>
         <p class="font-heading-3">I'm a...</p>
         <p class="font-content">
@@ -20,16 +24,32 @@ const nucs_url = "https://www.mccormick.northwestern.edu/computer-science/";
         </p>
       </li>
       <li>
-        <p class="font-heading-3">I also go by...</p>
-        <p class="font-content">Josh/Joshua</p>
+        <p class="font-heading-3">Latest Rabbit Hole I'm In</p>
+        <p class="font-content">
+          Hamiltonian Simulation Compilers for Quantum Computers
+        </p>
       </li>
     </ul>
-    <LinkButton link="/about/" text="About Me" />
+
+    <LinkButton href="/about/">About Me</LinkButton>
   </Section>
 
   <Section color="columbia-blue">
     <h2 class="font-heading-2">News</h2>
-    <p class="font-content">iausdiaudjiausd</p>
+    <table class="w-full font-content text-left">
+      <tbody>
+        {
+          newsItems.map((item) => (
+            <tr class="align-top">
+              <td class="pr-12 font-emph whitespace-nowrap pt-4">
+                {item.dateFormatted}
+              </td>
+              <td class="pt-4" set:html={item.content} />
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
   </Section>
 
   <Section>
