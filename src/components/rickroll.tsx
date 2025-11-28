@@ -111,7 +111,6 @@ function Rickroll({
       );
     }
   
-    // IMPORTANT: embed has *no* start, *no* autoplay
     const embedUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${window.location.origin}&autoplay=1`;
   
     return (
