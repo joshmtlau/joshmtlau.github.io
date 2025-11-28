@@ -3,7 +3,7 @@ import "katex/dist/katex.min.css";
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
-import LinkButton from "../components/LinkButton.astro";
+
 const { titlePrefix } = Astro.props;
 const { titleSuffix } = Astro.props;
 ---
@@ -38,13 +38,13 @@ const { titleSuffix } = Astro.props;
       }
     </title>
   </head>
-  <body class="bg-snow font-content">
+  <body class="font-content min-h-screen flex flex-col m-0">
     <header class="bg-snow sticky top-0 z-50">
       <div class="max-w-6xl mx-auto px-4">
         <NavBar />
       </div>
     </header>
-    <main>
+    <main class="flex-grow">
       <div>
         <slot />
       </div>

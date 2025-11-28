@@ -1,19 +1,57 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
 import Section from "../components/Section.astro";
-import ItemList from "../components/ItemList.astro";
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0)
-);
+const projects = [
+    {
+        title: "Qsyn",
+        description: "A quantum circuit synthesis tool and library that supports multiple quantum circuit optimization and synthesis paradigms. It started out as a our lab's project and I ended up leading the project. We presented a poster of it at QCE'24. Logo created by Cheng-Hua (Anita) Lu, an early contributor to the project.",
+        url: "https://github.com/DVLab-NTU/qsyn",
+        tags: ["C++", "Quantum Computing"],
+        image: "/images/qsyn.png",
+    },
+    {
+        title: "video-tagger",
+        description: "Somebody needed help to streamline animal behavior data processing, so I helped them and learned to vibe code.",
+        url: "https://github.com/joshmtlau/video-tagger",
+        tags: ["Python", "Qt", "Vibe Coding"],
+    },
+];
 ---
 
 <BaseLayout>
   <Section>
     <h1 class="font-heading-1">Projects</h1>
 
-    <p class="mb-8 mt-8 text-jet">My personal and professional projects</p>
-    <ItemList items={projects} basePath="/projects" />
+    <p class="mb-8 mt-8 text-jet">Research projects and more. More to come!</p>
+    <ul class="w-full space-y-4">
+        <li>
+
+            {
+                projects.map((project) => (
+                    <div class="flex justify-between space-x-4">
+                        <div class="mt-4">
+                            <div class="flex justify-left space-x-4">  
+                                <h1 class="link font-emph my-0">
+                                    <a href={project.url}>{project.title}</a>
+                                </h1>
+                                <div class="text-jet">
+                                    {project.tags.join(", ")}
+                                </div>
+                            </div>
+                            <div class="text-jet-light">
+                                {project.description}
+                            </div>
+                        </div>
+                        {project.image && (
+                            <div class="flex justify-right m-0 p-0 mt-4">
+                                <img src={project.image} alt={project.title} class="max-h-120 w-auto object-contain aspect-auto" />
+                            </div>
+                        )}
+                    </div>
+                ))
+            }
+            </li>
+    </ul>
   </Section>
 </BaseLayout>

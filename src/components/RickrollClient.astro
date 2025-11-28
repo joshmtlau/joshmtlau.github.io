@@ -1,0 +1,8 @@
+---
+import Rickroll from './rickroll';
+
+const props = Astro.props;
+---
+
+<Rickroll client:only="react" {...props} />
+
