@@ -11,9 +11,9 @@ const posts = (await getCollection("posts")).sort(
 
 <BaseLayout>
   <Section>
-    <h1 class="font-heading-1">Blog</h1>
+    <h1 class="font-heading-1">Bits for Qubits</h1>
 
-    <p class="mb-8 mt-8 text-jet">This is where I'll be posting blogs (duh)</p>
+    <p class="mb-8 mt-8 text-jet">A blog about quantum computing and also other things interesting to me.</p>
     <ItemList items={posts} basePath="/posts" />
   </Section>
 </BaseLayout>

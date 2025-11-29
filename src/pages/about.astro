@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import LinkButton from "../components/LinkButton.astro";
 
 const nucs_url = "https://www.mccormick.northwestern.edu/computer-science/";
 const nikos_url = "https://users.cs.northwestern.edu/~hardav/#top";
@@ -9,14 +10,56 @@ const giee_url = "https://graduate.ee.ntu.edu.tw/";
 const ric_url = "https://www.ee.ntu.edu.tw/profile1.php?teacher_id=901153";
 const qsyn_url = "https://github.com/DVLab-NTU/qsyn";
 const ntuwb_url = "https://www.instagram.com/ntuwindband/";
+import Section from "../components/Section.astro";
+
+const educationItems = [
+    {
+        degree: "PhD in Computer Science",
+        institution: "Northwestern University",
+        dateStart: "2025.09",
+    },
+    {
+        degree: "MS in Electrical Engineering",
+        institution: "National Taiwan University",
+        dateStart: "2022.09",
+        dateEnd: "2024.06",
+    },
+    {
+        degree: "BS in Electrical Engineering",
+        institution: "National Taiwan University",
+        dateStart: "2017.09",
+        dateEnd: "2022.06",
+    },
+];
+
+const experienceItems = [
+    {
+        position: "Research Associate",
+        institution: "National Taiwan University",
+        dateStart: "2024.08",
+        dateEnd: "2025.02",
+
+    },
+    {
+        position: "Teaching Assistant",
+        institution: "National Taiwan University",
+        dateStart: "2022.09",
+        dateEnd: "2024.06",
+        highlights: ["EEE 5065 Special Topics in Quantum Design Automation", 
+        "CommE 5061 Quantum Information and Computation (twice)", 
+        "EE 3035 Web Programming (twice)"]
+    }
+];
 ---
 
-<BaseLayout titlePrefix="About">
-  <section class="max-w-6xl mx-auto px-4 pt-16 pb-16">
-    <h1 class="font-heading-1">Mu-Te Lau</h1>
 
+<BaseLayout titlePrefix="About">
+  <Section>
+    <h1 class="font-heading-1">About Me</h1>
+    <span class="font-heading-2">Aspiring Quantum Software Researcher.</span>
     <p class="font-content">
-      I'm a PhD student at
+      I'm Mu-Te Lau ("Moo-Tuh Lau", Mandarin: 劉慕德), 
+      a PhD student at
       <a class="link" href={nucs_url}>CS, Northwestern University</a>. I'm
       currently advised by
       <a class="link" href={nikos_url}>Prof. Nikos Hardavellas</a>, and I also
@@ -44,21 +87,56 @@ const ntuwb_url = "https://www.instagram.com/ntuwindband/";
       > and had served various roles, including chair Euphonium player, (vice) band
       leader, social media editor.
     </p>
+  </Section>
+  <Section color="columbia-blue">
+    <h2 class="font-heading-2">Education</h2>
+  <table class="w-full font-content text-left">
+    <tbody>
+      {
+        educationItems.map((item) => (
+          <tr class="align-top">
+            <td class="w-48 pr-8 py-0">
+                <span class="font-content">{item.dateStart} - {item.dateEnd ? `${item.dateEnd}` : "Present"}</span>
+            </td>
+            <td class="py-0">
+              <span class="font-emph">{item.degree}, {item.institution}
+              </span>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
 
-    <h2 class="font-heading-3">Pronouncing My Name</h2>
-    <p class="font-content">
-      In English it's "Moo-Tuh Lau"! In Mandarin it's 劉慕德 (IPA:
-      <span class="font-emph">[ljow˧˨˧ mu˦˩ tɤ˧˨˧]</span>).
-    </p>
-    <details class="font-content">
-      <summary class="link-inverse font-emph"
-        >Details for the linguistic nerds or confused Mandarin speakers</summary
-      >
-      <div class="font-content pl-4">
-        The English transcription is an amalgamation of a Mandarin 慕德 (Mu-Te)
-        and a Cantonese/Taigi 劉 (Lau). As a result I have Lau instead of Liu as
-        my surname.
-      </div>
-    </details>
-  </section>
+  <h2 class="font-heading-2">Experiences</h2>
+  <table class="w-full font-content text-left">
+    <tbody>
+      {
+        experienceItems.map((item) => (
+          <tr class="align-top">
+            <td class="w-48 pr-8 py-0">
+              <span class="font-content">{item.dateStart} - {item.dateEnd ? `${item.dateEnd}` : "Present"}</span>
+            </td>
+            <td class="py-0">
+              <span class="font-emph">{item.position}, {item.institution}</span>
+              {item.highlights && (
+                <ul class="font-content text-jet-light py-0 my-0 list-none">
+                  {item.highlights.map((highlight) => (
+                    <li>- {highlight}</li>
+                  ))}
+                </ul>
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <div class="flex space-x-4 justify-center md:justify-start"> 
+    <LinkButton href="/cv/">Full CV</LinkButton>
+    <LinkButton href="/publications/">Publications</LinkButton>
+    <LinkButton href="/projects/">Projects</LinkButton>
+  </div>
+  </Section>
 </BaseLayout>

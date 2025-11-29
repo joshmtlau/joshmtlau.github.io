@@ -44,6 +44,14 @@
     .link-inverse {
         @apply hover:underline decoration-1 underline-offset-2;
     }
+    .spaced-table {
+        border-spacing: 0 1rem;
+    }
+    @media (min-width: 768px) {
+        .spaced-table {
+            border-spacing: 0;
+        }
+    }
 }
 
 /* Apply custom classes to prose elements */

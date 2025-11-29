@@ -1,5 +1,6 @@
 ---
 import { formatDate } from "../utils/date";
+import TableRow from "./TableRow.astro";
 
 export interface Props {
   items: any[];
@@ -9,25 +10,17 @@ export interface Props {
 const { items, basePath = "/posts" } = Astro.props;
 ---
 
-<ul class="space-y-4">
-  {
-    items.map((item) => (
-      <li class="bg-columbia-blue rounded-md border-2 p-4 border-transparent hover:border-jet hover:border-solid">
-        <a href={`${basePath}/${item.slug}/`}>
-          <div class="leading-tight m-0">
-            <span class="font-emph leading-tight">{item.data.title}</span>
-            {item.data.date && (
-              <span class="text-jet leading-tight">
-                {" "}
-                — {formatDate(item.data.date)}
-              </span>
-            )}
-            {item.data.description && (
-              <p class="text-jet leading-tight">{item.data.description}</p>
-            )}
-          </div>
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<table class="w-full border-separate spaced-table">
+  <tbody>
+    {
+      items.map((item) => (
+        <TableRow
+          href={`${basePath}/${item.slug}/`}
+          leftSubtitle={formatDate(item.data.date)}
+          rightTitle={item.data.title}
+          rightSubtitle={item.data.description}
+        />
+      ))
+    }
+  </tbody>
+</table>

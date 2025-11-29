@@ -1,15 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
 import Section from "../components/Section.astro";
-import ItemList from "../components/ItemList.astro";
+import TableRow from "../components/TableRow.astro";
 import { formatYearMonth } from "../utils/date";
 const publications = [
     {
-        title: "Qsyn: A Developer-Friendly Quantum Circuit Synthesis Framework for NISQ Era and Beyond",
+        title: "Qsyn: A Developer-Friendly Quantum Circuit Synthesis Framework for NISQ Era and Beyond [Poster]",
         url: "https://ieeexplore.ieee.org/abstract/document/10821024",
         authors: ["Mu-Te Lau", "Chin-Yi Cheng", "Cheng-Hua Lu", "et al.", "Chung-Yang (Ric) Huang"],
-        venue: "QCE'24 [Poster]",
+        venue: "QCE'24",
         date: new Date(Date.parse("2024-07-31")),
     },
     {
@@ -35,35 +34,23 @@ const publications = [
     <h1 class="font-heading-1">Publications</h1>
 
     <p class="mb-8 mt-8 text-jet">Certified nerdiness of mine. 
-        Also check out my <a href="https://scholar.google.com/citations?user=J7BNBysAAAAJ&hl=en" class="link">Google Scholar</a>.</p>
-    <!-- <ItemList items={publications} basePath="/publications" /> -->
-    <table class="w-full">
+        Also check out my <a href="https://scholar.google.com/citations?user=J7BNBysAAAAJ&hl=en" class="link">Google Scholar</a>.
+    </p>
+
+    <table class="w-full border-separate spaced-table">
         <tbody>
         {
             publications.map((publication) => (
-                <tr class="align-top">
-                        <td class="pr-12 pt-4">
-                        <div class="justify-left">  
-                            <div class="font-emph my-0">
-                                {publication.venue}
-                            </div>
-                            <div class="text-jet-light">
-                                {formatYearMonth(publication.date)}
-                            </div>
-                        </div>
-                        </td>
-                        <td class="pt-4">
-                            <h1 class="link font-emph my-0">
-                                <a href={publication.url}>{publication.title}</a>
-                            </h1>
-                            <div class="text-jet-light">
-                                {publication.authors.join(", ")}
-                            </div>
-                        </td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+                <TableRow
+                    href={publication.url}
+                    leftLabel={publication.venue}
+                    leftSubtitle={formatYearMonth(publication.date)}
+                    rightTitle={publication.title}
+                    rightSubtitle={publication.authors.join(", ")}
+                />
+            ))
+        }
+        </tbody>
+    </table>
     </Section>
 </BaseLayout>

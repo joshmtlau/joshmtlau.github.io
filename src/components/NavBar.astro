@@ -1,30 +1,89 @@
 ---
 import NavbarIcon from "./NavbarIcon.astro";
+import { MobileMenuButton } from "./MobileMenuButton";
+import { CloseMenuButton } from "./CloseMenuButton";
+import { navigationItems } from "../config/navigation";
 ---
 
-<div class="max-w-6xl px-4 flex justify-between pt-16 pb-16">
+<div class="max-w-6xl px-4 flex justify-between pt-6 pb-6 md:pt-16 md:pb-16">
   {/* left: Logo that links to homepage */}
   <div class="flex">
     <a href="/">
       <NavbarIcon class="h-16" />
     </a>
   </div>
-  {/* right: pages (including homepage for clarity) */}
-  <nav class="flex justify-end w-auto">
+  
+  {/* Hamburger menu button - visible on mobile, hidden on desktop */}
+  <MobileMenuButton client:load />
+
+  {/* Desktop navigation - visible on desktop, hidden on mobile */}
+  <nav class="hidden md:flex justify-end w-auto">
     <ul class="flex items-center justify-between space-x-8">
-      <li>
-        <a class="font-emph link-inverse" href="/"> Home </a>
-      </li>
-      <li>
-        <a class="font-emph link-inverse" href="/about/"> About </a>
-      </li>
-      <li><a class="font-emph link-inverse" href="/cv/">CV</a></li>
-      <li>
-        <a class="font-emph link-inverse" href="/publications/">Publications</a>
-      </li>
-      <li><a class="font-emph link-inverse" href="/projects/">Projects</a></li>
-      <li><a class="font-emph link-inverse" href="/blog/">Blog</a></li>
-      <!-- <li><a class="font-emph link-inverse" href="/music/">Music</a></li> -->
+      {navigationItems
+        .filter((item) => item.enabled !== false)
+        .map((item) => (
+          <li>
+            <a class="font-emph link-inverse" href={item.href}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+    </ul>
+  </nav>
+
+  {/* Mobile menu - hidden by default, shown when hamburger is clicked */}
+  <nav
+    id="mobile-menu"
+    class="hidden fixed top-0 left-0 right-0 bottom-0 bg-snow z-[60] pt-20 pb-8 shadow-lg md:hidden overflow-y-auto"
+  >
+    {/* Close button in mobile menu */}
+    <div class="absolute top-4 right-4">
+      <CloseMenuButton client:load />
+    </div>
+    <ul class="flex flex-col items-center space-y-6 px-4">
+      {navigationItems
+        .filter((item) => item.enabled !== false)
+        .map((item) => (
+          <li>
+            <a
+              class="font-emph link-inverse text-2xl"
+              href={item.href}
+              onclick="document.getElementById('mobile-menu')?.classList.add('hidden')"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
     </ul>
   </nav>
 </div>
+
+<script is:inline>
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (mobileMenu) {
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      const menuButton = e.target.closest('[aria-label="Toggle menu"]');
+      const closeButton = e.target.closest('[aria-label="Close menu"]');
+      const menuLink = e.target.closest('#mobile-menu a');
+      
+      if (
+        !menuButton &&
+        !closeButton &&
+        !menuLink &&
+        !mobileMenu.contains(e.target) &&
+        !mobileMenu.classList.contains("hidden")
+      ) {
+        mobileMenu.classList.add("hidden");
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+      }
+    });
+  }
+</script>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
+import TableRow from "../components/TableRow.astro";
 
 const projects = [
     {
@@ -24,34 +25,21 @@ const projects = [
     <h1 class="font-heading-1">Projects</h1>
 
     <p class="mb-8 mt-8 text-jet">Research projects and more. More to come!</p>
-    <ul class="w-full space-y-4">
-        <li>
-
-            {
-                projects.map((project) => (
-                    <div class="flex justify-between space-x-4">
-                        <div class="mt-4">
-                            <div class="flex justify-left space-x-4">  
-                                <h1 class="link font-emph my-0">
-                                    <a href={project.url}>{project.title}</a>
-                                </h1>
-                                <div class="text-jet">
-                                    {project.tags.join(", ")}
-                                </div>
-                            </div>
-                            <div class="text-jet-light">
-                                {project.description}
-                            </div>
-                        </div>
-                        {project.image && (
-                            <div class="flex justify-right m-0 p-0 mt-4">
-                                <img src={project.image} alt={project.title} class="max-h-120 w-auto object-contain aspect-auto" />
-                            </div>
-                        )}
-                    </div>
-                ))
-            }
-            </li>
-    </ul>
+    <table class="w-full border-separate spaced-table">
+        <tbody>
+        {
+            projects.map((project) => (
+                <TableRow
+                    href={project.url}
+                    leftLabel={project.tags.join(", ")}
+                    rightTitle={project.title}
+                    rightSubtitle={project.description}
+                    image={project.image}
+                    imageAlt={project.title}
+                />
+            ))
+        }
+        </tbody>
+    </table>
   </Section>
 </BaseLayout>
