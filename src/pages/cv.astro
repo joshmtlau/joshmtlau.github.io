@@ -6,6 +6,7 @@ import Section from "../components/Section.astro";
 // rawcdn.githack.com to serve the PDF file from GitHub
 const cv_url =
   "https://rawcdn.githack.com/joshmtlau/curriculum-vitae/9cf9f2782d22d81b17a6624eb7ad3c11f53a9e16/cv.pdf";
+const cv_url_with_zoom = `${cv_url}#zoom=page-fit`;
 ---
 
 <BaseLayout>
@@ -22,7 +23,8 @@ const cv_url =
     <div class="cv-container">
       <div class="pdf-viewer">
         <iframe
-          src={cv_url}
+          id="cv-iframe"
+          src={cv_url_with_zoom}
           width="100%"
           height="800px"
           style="border: 1px solid #ddd; border-radius: 8px;"
@@ -45,6 +47,8 @@ const cv_url =
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   @media (max-width: 768px) {
@@ -53,3 +57,33 @@ const cv_url =
     }
   }
 </style>
+
+<script is:inline>
+  // Dynamically adjust PDF zoom based on viewport width
+  function adjustPDFZoom() {
+    const iframe = document.getElementById('cv-iframe');
+    if (!iframe) return;
+
+    const container = iframe.parentElement;
+    if (!container) return;
+    const containerWidth = container.offsetWidth;
+    
+    // Standard PDF page width is typically 8.5 inches = 816px at 96 DPI
+    // If container is narrower, we might need to scale
+    // For very narrow screens, the PDF viewer should handle it with #zoom=page-fit
+    // But we can also add additional scaling if needed
+    
+    // Check if we're on a narrow viewport
+    if (containerWidth < 900) {
+      // The #zoom=page-fit parameter should handle this, but we ensure
+      // the iframe can scroll horizontally if needed
+      iframe.style.minWidth = '100%';
+    }
+  }
+
+  // Run on load and resize
+  if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', adjustPDFZoom);
+    window.addEventListener('resize', adjustPDFZoom);
+  }
+</script>
