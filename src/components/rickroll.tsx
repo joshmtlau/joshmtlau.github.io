@@ -88,41 +88,71 @@ function Rickroll({
     // Hook: gives you a ref for the iframe
     const iframeRef = useYouTubePlayer(isPlaying, videoId, start);
   
+    const aspectRatio = height / width;
+    const maxWidth = width;
+  
     if (!isPlaying) {
       return (
-        <button
+        <div
           style={{
-            width,
-            height,
-            border: "none",
-            borderRadius: 12,
-            backgroundColor: "#111",
-            color: "#fff",
-            cursor: "pointer",
-            fontSize: 18,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            position: "relative",
+            width: "100%",
+            maxWidth: `${maxWidth}px`,
+            aspectRatio: `${width} / ${height}`,
           }}
-          onClick={() => setIsPlaying(true)}
         >
-          Click to Play
-        </button>
+          <button
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+              borderRadius: 12,
+              backgroundColor: "#111",
+              color: "#fff",
+              cursor: "pointer",
+              fontSize: "clamp(14px, 2vw, 18px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onClick={() => setIsPlaying(true)}
+          >
+            Click to Play
+          </button>
+        </div>
       );
     }
   
     const embedUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${window.location.origin}&autoplay=1`;
   
     return (
-      <iframe
-        ref={iframeRef}
-        width={width}
-        height={height}
-        title={title}
-        src={embedUrl}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: `${maxWidth}px`,
+          aspectRatio: `${width} / ${height}`,
+        }}
+      >
+        <iframe
+          ref={iframeRef}
+          width="100%"
+          height="100%"
+          title={title}
+          src={embedUrl}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            border: "none",
+            borderRadius: 12,
+          }}
+        />
+      </div>
     );
   }
 
