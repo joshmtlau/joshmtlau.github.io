@@ -1,3 +1,5 @@
+import { formatDate } from "../utils/date";
+
 const newsItems = [
     {
       date: new Date(Date.parse("2025-09-16")),
@@ -16,7 +18,7 @@ const newsItems = [
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .map((item) => ({
       ...item,
-      dateFormatted: `${item.date.getFullYear()}-${String(item.date.getMonth() + 1).padStart(2, "0")}-${String(item.date.getDate() + 1).padStart(2, "0")}`,
+      dateFormatted: formatDate(item.date),
     }));
 
 export default newsItems;
