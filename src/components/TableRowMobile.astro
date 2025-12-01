@@ -1,0 +1,71 @@
+---
+import ExternalLinkIcon from "./ExternalLinkIcon.astro";
+
+export interface Props {
+  leftLabel?: string;
+  leftSubtitle?: string;
+  rightTitle: string;
+  rightSubtitle?: string;
+  image?: string;
+  imageAlt?: string;
+  isExternal: boolean;
+  titleWithoutLastWord: string;
+  lastWord: string;
+}
+
+const {
+  leftLabel,
+  leftSubtitle,
+  rightTitle,
+  rightSubtitle,
+  image,
+  imageAlt,
+  isExternal,
+  titleWithoutLastWord,
+  lastWord,
+} = Astro.props;
+---
+
+<td class="md:hidden py-4 pr-4 pl-4 md:pl-0 rounded-l-lg rounded-r-lg md:rounded-l-none border-t border-r border-b border-l md:border-l-0 border-gray-300 md:border-0 group-hover:bg-columbia-blue ease-in-out transition duration-100">
+  <h1 class="font-emph my-0">
+    {titleWithoutLastWord && (
+      <>
+        {titleWithoutLastWord}
+        {' '}
+      </>
+    )}
+    <span class="whitespace-nowrap">
+      {lastWord}
+      {isExternal && <ExternalLinkIcon />}
+    </span>
+  </h1>
+
+  <div>
+    {leftLabel && (
+      <span class="font-content my-1">
+        {leftLabel}
+      </span>
+    )}
+    {leftLabel && leftSubtitle && <span class="text-jet-light"> - </span>}
+
+    {leftSubtitle && (
+      <span class="text-jet-light my-1">
+        {leftSubtitle}
+      </span>
+    )}
+  </div>
+
+  {rightSubtitle && (
+    <div class="text-jet-light my-1">
+      {rightSubtitle}
+    </div>
+  )}
+
+  {image && (
+    <div class="mt-4 flex justify-center">
+      <img src={image} alt={imageAlt || rightTitle} class="max-h-32 w-auto object-contain aspect-auto" />
+    </div>
+  )}
+</td>
+
+

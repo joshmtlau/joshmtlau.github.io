@@ -2,11 +2,18 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Section from "../components/Section.astro";
-import ItemList from "../components/ItemList.astro";
+import TableRow from "../components/TableRow.astro";
+import { formatDate } from "../utils/date";
 
-const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+const posts = (await getCollection("posts"))
+  .map((post) => ({
+    slug: post.slug,
+    date: post.data.date,
+    title: post.data.title,
+    description: post.data.description,
+    tags: post.data.tags,
+  }))
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
 <BaseLayout>
@@ -14,6 +21,21 @@ const posts = (await getCollection("posts")).sort(
     <h1 class="font-heading-1">Bits for Qubits</h1>
 
     <p class="mb-8 mt-8 text-jet">A blog about quantum computing and also other things interesting to me.</p>
-    <ItemList items={posts} basePath="/posts" />
+
+    <table class="w-full border-separate spaced-table">
+      <tbody>
+        {
+          posts.map((post) => (
+            <TableRow
+              href={`/posts/${post.slug}/`}
+              leftLabel={post.tags?.join(", ") ?? "Misc"}
+              leftSubtitle={formatDate(post.date)}
+              rightTitle={post.title}
+              rightSubtitle={post.description}
+            />
+          ))
+        }
+      </tbody>
+    </table>
   </Section>
 </BaseLayout>
