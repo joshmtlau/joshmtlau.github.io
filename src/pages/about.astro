@@ -60,10 +60,10 @@ const experienceItems = [
         <h1 class="font-heading-1">About Me</h1>
         <span class="font-heading-2">Aspiring Quantum Software Researcher.</span>
         <p class="font-content">
-          I'm Mu-Te Lau ("Moo-Tuh Lau", Mandarin: 劉慕德), 
+          I'm <span class="font-emph">Mu-Te Lau</span> ("Moo-Tuh Lau", Mandarin: 劉慕德), 
           a PhD student at
           <a class="link" href={nucs_url}>CS, Northwestern University</a>. I'm
-          currently advised by
+          currently mentored by
           <a class="link" href={nikos_url}>Prof. Nikos Hardavellas</a>, and I also
           work with <a class="link" href={kate_url}>Prof. Kate Smith</a> often. My research
           interest lies in system software for quantum computing, particularly quantum
@@ -127,7 +127,7 @@ const experienceItems = [
             <td class="py-0">
               <span class="font-emph">{item.position}, {item.institution}</span>
               {item.highlights && (
-                <ul class="font-content text-jet-light py-0 my-0 list-none">
+                <ul class="font-content text-sapphire py-0 my-0 list-none">
                   {item.highlights.map((highlight) => (
                     <li>- {highlight}</li>
                   ))}
