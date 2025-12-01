@@ -55,38 +55,45 @@ const experienceItems = [
 
 <BaseLayout titlePrefix="About">
   <Section>
-    <h1 class="font-heading-1">About Me</h1>
-    <span class="font-heading-2">Aspiring Quantum Software Researcher.</span>
-    <p class="font-content">
-      I'm Mu-Te Lau ("Moo-Tuh Lau", Mandarin: 劉慕德), 
-      a PhD student at
-      <a class="link" href={nucs_url}>CS, Northwestern University</a>. I'm
-      currently advised by
-      <a class="link" href={nikos_url}>Prof. Nikos Hardavellas</a>, and I also
-      work with <a class="link" href={kate_url}>Prof. Kate Smith</a> often. My research
-      interest lies in system software for quantum computing, particularly quantum
-      compilation. I focus on developing techniques that cut quantum computing costs
-      and make quantum algorithms more practical.
-    </p>
+    <div class="flex flex-col md:flex-row gap-0 md:gap-8 items-start md:items-center">
+      <div class="flex-1">
+        <h1 class="font-heading-1">About Me</h1>
+        <span class="font-heading-2">Aspiring Quantum Software Researcher.</span>
+        <p class="font-content">
+          I'm Mu-Te Lau ("Moo-Tuh Lau", Mandarin: 劉慕德), 
+          a PhD student at
+          <a class="link" href={nucs_url}>CS, Northwestern University</a>. I'm
+          currently advised by
+          <a class="link" href={nikos_url}>Prof. Nikos Hardavellas</a>, and I also
+          work with <a class="link" href={kate_url}>Prof. Kate Smith</a> often. My research
+          interest lies in system software for quantum computing, particularly quantum
+          compilation. I focus on developing techniques that cut quantum computing costs
+          and make quantum algorithms more practical.
+        </p>
 
-    <p class="font-content">
-      Previously at
-      <a class="link" href={dvlab_url}
-        >Design Verification Lab, National Taiwan University</a
-      > (advised by
-      <a class="link" href={ric_url}>Prof. Chung-Yang (Ric) Huang</a>), I
-      co-developed <a class="link" href={qsyn_url}>Qsyn</a>, an open-source
-      quantum circuit optimization tool, where I turned research breakthroughs
-      into features while leading performance boosts and code overhauls.
-    </p>
+        <p class="font-content">
+          Previously at
+          <a class="link" href={dvlab_url}
+            >Design Verification Lab, National Taiwan University</a
+          > (advised by
+          <a class="link" href={ric_url}>Prof. Chung-Yang (Ric) Huang</a>), I
+          co-developed <a class="link" href={qsyn_url}>Qsyn</a>, an open-source
+          quantum circuit optimization tool, where I turned research breakthroughs
+          into features while leading performance boosts and code overhauls.
+        </p>
 
-    <p class="font-content">
-      Beyond research, I'm a passionate musician and play the euphonium and
-      piano. I was a member of the <a class="link" href={ntuwb_url}
-        >NTU Wind Band</a
-      > and had served various roles, including chair Euphonium player, (vice) band
-      leader, social media editor.
-    </p>
+        <p class="font-content">
+          Beyond research, I'm a passionate musician and play the euphonium and
+          piano. I was a member of the <a class="link" href={ntuwb_url}
+            >NTU Wind Band</a
+          > and had served various roles, including chair Euphonium player, (vice) band
+          leader, social media editor.
+        </p>
+      </div>
+      <div class="flex-shrink-0 mt-12 mx-auto md:mx-0 md:w-80 aspect-square md:aspect-auto max-h-120 md:max-h-none overflow-hidden rounded-lg shadow-lg">
+        <img src="/images/myself2.jpg" alt="Mu-Te Lau" class="w-full h-full object-cover object-[center_40%] md:object-cover md:object-center" />
+      </div>
+    </div>
   </Section>
   <Section color="columbia-blue">
     <h2 class="font-heading-2">Education</h2>

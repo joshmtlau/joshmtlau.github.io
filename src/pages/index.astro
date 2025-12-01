@@ -9,29 +9,44 @@ const nucs_url = "https://www.mccormick.northwestern.edu/computer-science/";
 
 <BaseLayout titleSuffix="PhD student at CS, Northwestern">
   <Section>
-    <h1 class="font-heading-1">Mu-Te Lau</h1>
+    <div class="flex flex-col md:flex-row gap-0 md:gap-8 items-start md:items-center">
+      <div class="flex-1">
+        <h1 class="font-heading-1">Mu-Te Lau</h1>
 
-    <p class="font-content">
-      Hi, I'm Mu-Te Lau (劉慕德)! I build compilers and other system software
-      for quantum computers.
-    </p>
-
-    <ul class="flex space-x-16 mt-8 mb-8">
-      <li>
-        <p class="font-heading-3">I'm a...</p>
         <p class="font-content">
-          PhD student in <a class="link" href={nucs_url}> CS, Northwestern</a>
+          Hi, I'm Mu-Te Lau (劉慕德)! I build compilers and other system software
+          for quantum computers.
         </p>
-      </li>
-      <li>
-        <p class="font-heading-3">Latest Rabbit Hole I'm In</p>
-        <p class="font-content">
-          Hamiltonian Simulation Compilers for Quantum Computers
-        </p>
-      </li>
-    </ul>
 
-    <LinkButton href="/about/">About Me</LinkButton>
+        <table class="w-full font-content text-left mt-8 mb-8">
+          <thead>
+            <tr class="align-top">
+              <th class="pr-12 font-heading-3 text-left pt-4">
+                I'm a...
+              </th>
+              <th class="font-heading-3 text-left pt-4">
+                Latest Rabbit Hole I'm In
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="align-top">
+              <td class="pr-12 pt-4 font-content">
+                PhD student in <a class="link" href={nucs_url}> CS, Northwestern</a>
+              </td>
+              <td class="pt-4 font-content">
+                Compilers for Quantum Hamiltonian Simulation 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <LinkButton href="/about/">About Me</LinkButton>
+      </div>
+      <div class="flex-shrink-0 mt-12 mx-auto md:mx-0 md:w-72 aspect-square md:aspect-auto max-h-120 md:max-h-none overflow-hidden rounded-lg shadow-lg">
+        <img src="/images/myself1.jpg" alt="Mu-Te Lau" class="w-full h-full object-cover object-[center_40%] md:object-cover md:object-center" />
+      </div>
+    </div>
   </Section>
 
   <Section color="columbia-blue">
