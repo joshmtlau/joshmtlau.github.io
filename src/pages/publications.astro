@@ -4,6 +4,16 @@ import Section from "../components/Section.astro";
 import TableRow from "../components/TableRow.astro";
 import { formatYearMonth } from "../utils/date";
 import publications from "../content/publications";
+
+const MY_NAME = "Mu-Te Lau";
+
+function formatAuthors(authors: string[]) {
+  return authors
+    .map((author) =>
+      author === MY_NAME ? `<strong>${author}</strong>` : author,
+    )
+    .join(", ");
+}
 ---
 
 <BaseLayout>
@@ -19,11 +29,11 @@ import publications from "../content/publications";
         {
             publications.map((publication) => (
                 <TableRow
-                    href={publication.url}
+                    href={publication.url || undefined}
                     leftLabel={publication.venue}
                     leftSubtitle={formatYearMonth(publication.date)}
                     rightTitle={publication.title}
-                    rightSubtitle={publication.authors.join(", ")}
+                    rightSubtitle={formatAuthors(publication.authors)}
                 />
             ))
         }

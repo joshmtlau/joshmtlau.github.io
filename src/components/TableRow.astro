@@ -3,7 +3,7 @@ import TableRowMobile from "./TableRowMobile.astro";
 import TableRowDesktop from "./TableRowDesktop.astro";
 
 export interface Props {
-  href: string;
+  href?: string;
   leftLabel?: string;
   leftSubtitle?: string;
   rightTitle: string;
@@ -22,8 +22,9 @@ const {
   imageAlt,
 } = Astro.props;
 
-// Check if link is external
-const isExternal = href.startsWith("http://") || href.startsWith("https://");
+const hasLink = Boolean(href);
+const isExternal =
+  !!href && (href.startsWith("http://") || href.startsWith("https://"));
 
 // Split title into words for proper wrapping with icon
 const titleWords = rightTitle.split(" ");
@@ -31,9 +32,9 @@ const titleWithoutLastWord = titleWords.slice(0, -1).join(" ");
 const lastWord = titleWords[titleWords.length - 1] || rightTitle;
 ---
 
-<tr 
-  class="align-top cursor-pointer group"
-  onclick={`window.location.href='${href}'`}
+<tr
+  class:list={["align-top group", hasLink && "cursor-pointer"]}
+  onclick={hasLink ? `window.location.href='${href}'` : undefined}
 >
     <TableRowMobile
       leftLabel={leftLabel}

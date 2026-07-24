@@ -46,7 +46,9 @@ const {
           {isExternal && <ExternalLinkIcon />}
         </span>
       </h1>
-      {rightSubtitle && <div class="text-jet-light">{rightSubtitle}</div>}
+      {rightSubtitle && (
+        <div class="text-jet-light" set:html={rightSubtitle} />
+      )}
     </div>
     {
       image && (

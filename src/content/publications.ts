@@ -22,7 +22,7 @@ const publications = [
       "Hsin-Yu Chen",
       "Chung-Yang (Ric) Huang",
     ],
-    url: "https://arxiv.org/abs/2508.04092",
+    url: "https://ieeexplore.ieee.org/document/11250139",
     venue: "QCE'25",
     date: new Date(Date.parse("2025-07-08")),
   },
@@ -34,6 +34,21 @@ const publications = [
     venue: "Master's Thesis",
     date: new Date(Date.parse("2024-08-14")),
   },
+  {
+    title:
+        "SEQC: Stratify-Elaborate Quantum Compilation Towards Modular Hybrid Architectures",
+        authors: [
+            "Mingyoung Jessica Jeng",
+            "Nikola Vuk Maruszewski",
+            "Mu-Te Lau",
+            "Connor Selna",
+            "Michael Gavrincea",
+            "Kaitlin N. Smith",
+            "Nikos Hardavellas",
+        ],
+        venue: "QCE'26 (To Appear)",
+        date: new Date(Date.parse("2026-07-07")),
+  }
 ].sort(
   (a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0),
 );
