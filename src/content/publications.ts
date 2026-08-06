@@ -37,17 +37,18 @@ const publications = [
   {
     title:
         "SEQC: Stratify-Elaborate Quantum Compilation Towards Modular Hybrid Architectures",
-        authors: [
-            "Mingyoung Jessica Jeng",
-            "Nikola Vuk Maruszewski",
-            "Mu-Te Lau",
-            "Connor Selna",
-            "Michael Gavrincea",
-            "Kaitlin N. Smith",
-            "Nikos Hardavellas",
-        ],
-        venue: "QCE'26 (To Appear)",
-        date: new Date(Date.parse("2026-07-07")),
+    authors: [
+        "Mingyoung Jessica Jeng",
+        "Nikola Vuk Maruszewski",
+        "Mu-Te Lau",
+        "Connor Selna",
+        "Michael Gavrincea",
+        "Kaitlin N. Smith",
+        "Nikos Hardavellas",
+    ],
+    url: "https://arxiv.org/abs/2501.08478",
+    venue: "QCE'26 (To Appear)",
+    date: new Date(Date.parse("2026-07-07")),
   }
 ].sort(
   (a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0),
